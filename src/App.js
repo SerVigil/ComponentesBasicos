@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import {Container, Row, Col, ListGroup} from 'react-bootstrap';
+import {Container, Row, Col, ListGroup, Navbar, Nav, NavDropdown, NavLink} from 'react-bootstrap';
 import Peliculas from './Peliculas';
 
 function App() {
@@ -23,8 +23,29 @@ function App() {
 
 
   return (
-    <Container>
-      {peliculaSeleccionada && (
+    <>
+    <div>
+    <Navbar bg="dark" variant="dark" expand="lg">
+            <Container>
+            <Navbar.Brand href="#home">Menú</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav>
+                    <NavDropdown title="Categorías" id="basic-nav-dropdown">
+                      {peliculas.map((pelicula, index)=>
+                    <NavDropdown.Item key = "index" href="#action">{pelicula.categoria}</NavDropdown.Item>)}
+                    </NavDropdown>
+                      <NavDropdown title= "Directores" id='basic-nav-dropdown'>
+                      {peliculas.map((pelicula, index)=>
+              <NavDropdown.Item href="#action">{pelicula.director}</NavDropdown.Item>)}
+                    </NavDropdown>
+                  </Nav>
+                  </Navbar.Collapse>
+           
+                  </Container>
+                  </Navbar>
+    </div>
+      ({peliculaSeleccionada && (
       <Row>
         <Col md={8}>
         <img alt = "imagenPrincipal" src = {peliculaSeleccionada.foto} style={{
@@ -51,8 +72,7 @@ function App() {
           </Col>
           ))}
       </Row>
-    </Container>
-    
+      </>
   );
 }
 

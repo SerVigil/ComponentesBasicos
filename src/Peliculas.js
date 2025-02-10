@@ -1,5 +1,7 @@
-import { Button, Card, ListGroup } from "react-bootstrap";
+import { Button, Card, ListGroup} from "react-bootstrap";
 import React, { useState } from "react";
+
+
 
 
 function Peliculas({pelicula, onSelect}){
@@ -7,6 +9,7 @@ function Peliculas({pelicula, onSelect}){
     const [verMas, setVerMas] = useState(false);
 
     return(
+        
         <Card>
             <Card.Header>
                 <Card.Img variant="top" src={pelicula.foto}></Card.Img>
